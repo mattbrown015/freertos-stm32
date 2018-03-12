@@ -37,6 +37,7 @@
 								</option>
 								<option id="gnu.c.compiler.option.include.paths.1544006149" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\BSP\STM32L0538-Discovery&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\STM32L0xx_HAL_Driver\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\CMSIS\Device\ST\STM32L0xx\Include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\CMSIS\Include&quot;"/>
@@ -107,6 +108,7 @@
 								</option>
 								<option id="gnu.c.compiler.option.include.paths.1988173752" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\BSP\STM32L0538-Discovery&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\STM32L0xx_HAL_Driver\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\CMSIS\Device\ST\STM32L0xx\Include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\CMSIS\Include&quot;"/>
