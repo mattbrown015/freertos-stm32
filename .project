@@ -99,6 +99,10 @@
 	</linkedResources>
 	<variableList>
 		<variable>
+			<name>FREERTOS_LOC</name>
+			<value>file:/C:/Users/matthewb/Documents/work/FreeRTOSv10.0.1</value>
+		</variable>
+		<variable>
 			<name>STM32_CUBE_FW_L0_LOC</name>
 			<value>file:/C:/Users/matthewb/AppData/Roaming/Ac6/SW4STM32/firmwares/STM32Cube_FW_L0_V1.10.0</value>
 		</variable>
