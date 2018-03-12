@@ -4,6 +4,7 @@
 		<cconfiguration id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.732333561">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.732333561" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<macros>
+					<stringMacro name="FREERTOS_LOC" type="VALUE_TEXT" value="C:\Users\matthewb\Documents\work\FreeRTOSv10.0.1"/>
 					<stringMacro name="STM32_CUBE_FW_L0_LOC" type="VALUE_TEXT" value="C:\Users\matthewb\AppData\Roaming\Ac6\SW4STM32\firmwares\STM32Cube_FW_L0_V1.10.0"/>
 				</macros>
 				<externalSettings/>
@@ -76,6 +77,7 @@
 		<cconfiguration id="fr.ac6.managedbuild.config.gnu.cross.exe.release.1673945611">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="fr.ac6.managedbuild.config.gnu.cross.exe.release.1673945611" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<macros>
+					<stringMacro name="FREERTOS_LOC" type="VALUE_TEXT" value="C:\Users\matthewb\Documents\work\FreeRTOSv10.0.1"/>
 					<stringMacro name="STM32_CUBE_FW_L0_LOC" type="VALUE_TEXT" value="C:\Users\matthewb\AppData\Roaming\Ac6\SW4STM32\firmwares\STM32Cube_FW_L0_V1.10.0"/>
 				</macros>
 				<externalSettings/>
