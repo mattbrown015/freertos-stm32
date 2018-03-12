@@ -38,6 +38,7 @@
 								<option id="gnu.c.compiler.option.include.paths.1544006149" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\STM32L0xx_HAL_Driver\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\CMSIS\Device\ST\STM32L0xx\Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\CMSIS\Include&quot;"/>
 								</option>
 								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.459491351" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c"/>
 								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s.1813968663" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s"/>
@@ -105,6 +106,7 @@
 								<option id="gnu.c.compiler.option.include.paths.1988173752" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\STM32L0xx_HAL_Driver\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\CMSIS\Device\ST\STM32L0xx\Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${STM32_CUBE_FW_L0_LOC}\Drivers\CMSIS\Include&quot;"/>
 								</option>
 								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c.87205222" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.c"/>
 								<inputType id="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s.1967827167" superClass="fr.ac6.managedbuild.tool.gnu.cross.c.compiler.input.s"/>
