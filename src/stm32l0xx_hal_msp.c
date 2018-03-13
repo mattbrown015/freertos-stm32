@@ -46,10 +46,6 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-/** @defgroup HAL_MSP_Private_Functions
-  * @{
-  */
-
 /**
   * @brief UART MSP Initialization 
   *        This function configures the hardware resources used in this example: 
@@ -115,17 +111,5 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
   /*##-3- Disable the NVIC for UART ##########################################*/
   HAL_NVIC_DisableIRQ(USARTx_IRQn);
 }
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
