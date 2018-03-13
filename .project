@@ -117,6 +117,11 @@
 			<locationURI>$%7BFREERTOS_LOC%7D/FreeRTOS/Source/tasks.c</locationURI>
 		</link>
 		<link>
+			<name>FreeRTOS/Source/timers.c</name>
+			<type>1</type>
+			<locationURI>$%7BFREERTOS_LOC%7D/FreeRTOS/Source/timers.c</locationURI>
+		</link>
+		<link>
 			<name>Drivers/BSP/STM32L053C8_Discovery/stm32l0538_discovery.c</name>
 			<type>1</type>
 			<locationURI>STM32_CUBE_FW_L0_LOC/Drivers/BSP/STM32L0538-Discovery/stm32l0538_discovery.c</locationURI>
