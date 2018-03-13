@@ -1,3 +1,5 @@
+#include "../inc/stm32l0xx_hal_msp.h"
+
 #include <FreeRTOS.h>
 #include <task.h>
 
