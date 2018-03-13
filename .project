@@ -126,6 +126,11 @@
 			<type>1</type>
 			<locationURI>STM32_CUBE_FW_L0_LOC/Drivers/BSP/STM32L0538-Discovery/stm32l0538_discovery.c</locationURI>
 		</link>
+		<link>
+			<name>Drivers/CMSIS/Device/system_stm32l0xx.c</name>
+			<type>1</type>
+			<locationURI>$%7BSTM32_CUBE_FW_L0_LOC%7D/Drivers/CMSIS/Device/ST/STM32L0xx/Source/Templates/system_stm32l0xx.c</locationURI>
+		</link>
 	</linkedResources>
 	<variableList>
 		<variable>
