@@ -3,10 +3,17 @@
 #include <FreeRTOS.h>
 #include <task.h>
 
+#include <FreeRTOS_CLI.h>
+
 #include <stm32l0xx_hal.h>
 #include <stm32l0538_discovery.h>
 
 #include <stdlib.h>
+#include <string.h>
+
+// Must be power of 2 because of index increment hack below.
+#define MAX_CLI_COMMAND_LENGTH (1 << 4)
+#define MAX_CLI_COMMAND_OUTPUT_LENGTH (512)
 
 static UART_HandleTypeDef uartHandle
     = {
@@ -18,6 +25,12 @@ static UART_HandleTypeDef uartHandle
         , .Init.HwFlowCtl = UART_HWCONTROL_NONE
         , .Init.Mode = UART_MODE_TX_RX
     };
+
+BaseType_t cmdCallback(char * const pcWriteBuffer, const size_t xWriteBufferLen, const char * const pcCommandString)
+{
+    strcpy(pcWriteBuffer, "result\r\n");
+    return pdFALSE;
+}
 
 static void toggleLed3Task()
 {
@@ -46,17 +59,35 @@ static void uartReceiveTask()
     for (;;)
     {
         static uint8_t uartReceiveBuffer;
+        static uint8_t commandBuffer[MAX_CLI_COMMAND_LENGTH];
+        static size_t commandBufferIndex;
 
         HAL_UART_Receive(&uartHandle, &uartReceiveBuffer, sizeof(uartReceiveBuffer), HAL_MAX_DELAY);
         if (uartReceiveBuffer != '\r')
         {
             HAL_UART_Transmit(&uartHandle, &uartReceiveBuffer, sizeof(uartReceiveBuffer), HAL_MAX_DELAY);
+
+            commandBuffer[commandBufferIndex] = uartReceiveBuffer;
+
+            commandBufferIndex++;
+            commandBufferIndex &= (MAX_CLI_COMMAND_LENGTH - 1);
         }
         else
         {
             /*const*/uint8_t crlf[] =
                 { '\r', '\n' };
             HAL_UART_Transmit(&uartHandle, &crlf[0], sizeof(crlf), HAL_MAX_DELAY);
+
+            static char commandOutputBuffer[MAX_CLI_COMMAND_OUTPUT_LENGTH];
+            BaseType_t xReturn = pdFALSE;
+            do
+            {
+                xReturn = FreeRTOS_CLIProcessCommand((char*) commandBuffer, commandOutputBuffer, sizeof(commandOutputBuffer));
+                HAL_UART_Transmit(&uartHandle, (uint8_t*) commandOutputBuffer, sizeof(commandOutputBuffer), HAL_MAX_DELAY);
+            } while (xReturn != pdFALSE);
+
+            memset(commandBuffer, 0, sizeof(commandBuffer));
+            commandBufferIndex = 0;
         }
     }
 }
@@ -135,6 +166,15 @@ int main()
 
     if (transmit_greeting() != HAL_OK)
         return EXIT_FAILURE;
+
+    static const CLI_Command_Definition_t cliCmd
+        = {
+            .pcCommand = "cmd"
+            , .pcHelpString = "cmd: Do cmd!\r\n"
+            , .pxCommandInterpreter = cmdCallback
+            , .cExpectedNumberOfParameters = 0
+        };
+    FreeRTOS_CLIRegisterCommand(&cliCmd);
 
     const BaseType_t result0 = xTaskCreate(toggleLed3Task, "toggleLed3Task", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
     if (result0 != pdPASS)

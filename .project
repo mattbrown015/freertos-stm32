@@ -136,6 +136,11 @@
 			<type>1</type>
 			<locationURI>$%7BSTM32_CUBE_FW_L0_LOC%7D/Drivers/CMSIS/Device/ST/STM32L0xx/Source/Templates/system_stm32l0xx.c</locationURI>
 		</link>
+		<link>
+			<name>FreeRTOS-Plus/Source/FreeRTOS-Plus-CLI/FreeRTOS_CLI.c</name>
+			<type>1</type>
+			<locationURI>$%7BFREERTOS_LOC%7D/FreeRTOS-Plus/Source/FreeRTOS-Plus-CLI/FreeRTOS_CLI.c</locationURI>
+		</link>
 	</linkedResources>
 	<variableList>
 		<variable>
