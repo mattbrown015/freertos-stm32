@@ -48,7 +48,16 @@ static void uartReceiveTask()
         static uint8_t uartReceiveBuffer;
 
         HAL_UART_Receive(&uartHandle, &uartReceiveBuffer, sizeof(uartReceiveBuffer), HAL_MAX_DELAY);
-        HAL_UART_Transmit(&uartHandle, &uartReceiveBuffer, sizeof(uartReceiveBuffer), HAL_MAX_DELAY);
+        if (uartReceiveBuffer != '\r')
+        {
+            HAL_UART_Transmit(&uartHandle, &uartReceiveBuffer, sizeof(uartReceiveBuffer), HAL_MAX_DELAY);
+        }
+        else
+        {
+            /*const*/uint8_t crlf[] =
+                { '\r', '\n' };
+            HAL_UART_Transmit(&uartHandle, &crlf[0], sizeof(crlf), HAL_MAX_DELAY);
+        }
     }
 }
 
