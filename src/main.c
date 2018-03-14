@@ -8,6 +8,17 @@
 
 #include <stdlib.h>
 
+static UART_HandleTypeDef uartHandle
+    = {
+        .Instance = USARTx
+        , .Init.BaudRate = 9600
+        , .Init.WordLength = UART_WORDLENGTH_8B
+        , .Init.StopBits = UART_STOPBITS_1
+        , .Init.Parity = UART_PARITY_NONE
+        , .Init.HwFlowCtl = UART_HWCONTROL_NONE
+        , .Init.Mode = UART_MODE_TX_RX
+    };
+
 static void toggleLed3Task()
 {
     for (;;)
@@ -81,6 +92,13 @@ static void SystemClock_Config(void)
     HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1);
 }
 
+static HAL_StatusTypeDef transmit_greeting(void)
+{
+    /*const*/uint8_t greeting[]
+        = { 'f', 'r', 'e', 'e', 'r', 't', 'o', 's', '-', 's', 't', 'm', '3', '2', '\r', '\n' };
+    return HAL_UART_Transmit(&uartHandle, greeting, sizeof(greeting), HAL_MAX_DELAY);
+}
+
 int main()
 {
     HAL_Init();
@@ -90,6 +108,13 @@ int main()
 
     BSP_LED_Init(LED3);
     BSP_LED_Init(LED4);
+
+    const HAL_StatusTypeDef init_result = HAL_UART_Init(&uartHandle);
+    if (init_result != HAL_OK)
+        return EXIT_FAILURE;
+
+    if (transmit_greeting() != HAL_OK)
+        return EXIT_FAILURE;
 
     const BaseType_t result0 = xTaskCreate(toggleLed3Task, "toggleLed3Task", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
     if (result0 != pdPASS)
