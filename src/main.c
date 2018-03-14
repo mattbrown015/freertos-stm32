@@ -18,7 +18,8 @@
 static UART_HandleTypeDef uartHandle
     = {
         .Instance = USARTx
-        , .Init.BaudRate = 9600
+        ,
+        .Init.BaudRate = 19200
         , .Init.WordLength = UART_WORDLENGTH_8B
         , .Init.StopBits = UART_STOPBITS_1
         , .Init.Parity = UART_PARITY_NONE
