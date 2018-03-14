@@ -41,6 +41,17 @@ static void toggleLed4Task()
     }
 }
 
+static void uartReceiveTask()
+{
+    for (;;)
+    {
+        static uint8_t uartReceiveBuffer;
+
+        HAL_UART_Receive(&uartHandle, &uartReceiveBuffer, sizeof(uartReceiveBuffer), HAL_MAX_DELAY);
+        HAL_UART_Transmit(&uartHandle, &uartReceiveBuffer, sizeof(uartReceiveBuffer), HAL_MAX_DELAY);
+    }
+}
+
 /**
   * @brief  System Clock Configuration
   *         The system Clock is configured as follow : 
@@ -122,6 +133,10 @@ int main()
 
     const BaseType_t result1 = xTaskCreate(toggleLed4Task, "toggleLed4Task", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
     if (result1 != pdPASS)
+        return EXIT_FAILURE;
+
+    const BaseType_t result2 = xTaskCreate(uartReceiveTask, "uartReceiveTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL);
+    if (result2 != pdPASS)
         return EXIT_FAILURE;
 
     vTaskStartScheduler();
