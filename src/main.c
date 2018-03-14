@@ -83,6 +83,8 @@ static void uartReceiveTask()
             BaseType_t xReturn = pdFALSE;
             do
             {
+                memset(commandOutputBuffer, 0, sizeof(commandOutputBuffer));
+
                 xReturn = FreeRTOS_CLIProcessCommand((char*) commandBuffer, commandOutputBuffer, sizeof(commandOutputBuffer));
                 HAL_UART_Transmit(&uartHandle, (uint8_t*) commandOutputBuffer, sizeof(commandOutputBuffer), HAL_MAX_DELAY);
             } while (xReturn != pdFALSE);
